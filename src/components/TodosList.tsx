@@ -6,9 +6,14 @@ interface todoObject {
 interface TodosListProps {
   todos: todoObject[];
   onDelete: (todoId: string) => void;
+  onCompletedChange: (todoId: string) => void;
 }
 
-const TodosList: React.FC<TodosListProps> = ({ todos, onDelete }) => {
+const TodosList: React.FC<TodosListProps> = ({
+  todos,
+  onDelete,
+  onCompletedChange,
+}) => {
   return (
     <div className="list-wrapper">
       <ul className="d-flex flex-column todo-list">
@@ -21,6 +26,7 @@ const TodosList: React.FC<TodosListProps> = ({ todos, onDelete }) => {
                   className="checkbox"
                   type="checkbox"
                   checked={todo.isCompleted ? true : false}
+                  onChange={() => onCompletedChange(todo.id)}
                 />
                 {todo.title}
                 <i className="input-helper"> </i>
