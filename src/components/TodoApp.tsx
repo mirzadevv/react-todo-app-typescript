@@ -33,7 +33,7 @@ const TodoApp = () => {
             <div className="card-body">
               <h4 className="card-title">Awesome Todo list</h4>
               <InputForm onAdd={handleAdd} />
-              <TodosList />
+              <TodosList todos={todos} />
             </div>
           </div>
         </div>
