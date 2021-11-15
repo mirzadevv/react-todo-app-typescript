@@ -25,6 +25,11 @@ const TodoApp = () => {
     setTodos(cloudTodos);
   };
 
+  const handleDelete = (todoId: string) => {
+    const newTodos = todos.filter((todo) => todo.id !== todoId);
+    setTodos(newTodos);
+  };
+
   return (
     <div className="page-content page-container" id="page-content">
       <div className="row container d-flex justify-content-center">
@@ -33,7 +38,7 @@ const TodoApp = () => {
             <div className="card-body">
               <h4 className="card-title">Awesome Todo list</h4>
               <InputForm onAdd={handleAdd} />
-              <TodosList todos={todos} />
+              <TodosList todos={todos} onDelete={handleDelete} />
             </div>
           </div>
         </div>

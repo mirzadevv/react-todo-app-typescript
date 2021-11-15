@@ -5,9 +5,10 @@ interface todoObject {
 }
 interface TodosListProps {
   todos: todoObject[];
+  onDelete: (todoId: string) => void;
 }
 
-const TodosList: React.FC<TodosListProps> = ({ todos }) => {
+const TodosList: React.FC<TodosListProps> = ({ todos, onDelete }) => {
   return (
     <div className="list-wrapper">
       <ul className="d-flex flex-column todo-list">
@@ -25,7 +26,10 @@ const TodosList: React.FC<TodosListProps> = ({ todos }) => {
                 <i className="input-helper"> </i>
               </label>
             </div>
-            <i className="remove mdi mdi-close-circle-outline"></i>
+            <i
+              onClick={() => onDelete(todo.id)}
+              className="remove mdi mdi-close-circle-outline"
+            ></i>
           </li>
         ))}
       </ul>
